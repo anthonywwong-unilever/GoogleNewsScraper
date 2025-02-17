@@ -1,77 +1,63 @@
-from typing import Dict, List, Literal
+from typing import List, Optional
 from dataclasses import dataclass
-
-
-@dataclass
-class Quantity:
-    """
-    """
-    UNIQUE: str = 'unique'
-    MULTIPLE: str = 'multiple'  
 
 
 @dataclass
 class Theme:
     """A theme for sentiment analysis.
     """
-    DEMAND: str = 'demand'
-    SUPPLY: str = 'supply'
-    FEEDSTOCK_PRICE: str = 'feedstock price'
-    COMPONENT_PRICE: str = 'component price'
+    DEMAND: str = 'Demand'
+    SUPPLY: str = 'Supply'
+    FEEDSTOCK_PRICE: str = 'Feedstock Price'
+    COMPONENT_PRICE: str = 'Component Price'
 
 
 @dataclass
 class Article:
     """An article from a news site.
     """
-    site: str
-    link: str 
-    theme: Theme
-    keyword: str
-    html_text: str
+    site: Optional[str] 
+    url: str 
+    html_content: str
+
+    def __print__(self) -> None:
+        print(f"{self.site}: {self.url}")
+        print("\n HTML Content: \n")
+        print(self.html_content)
 
 
 @dataclass
-class Parser:
-    """An HTML parser to extract news text.
+class SearchResult:
+    """An article returned by Google search using keyword of a theme.
     """
-    SELENIUM: str = 'selenium'
-    BS4: str = 'beautiful soup'
+    keyword: str 
+    theme: Theme
+    article: Article
 
 
 @dataclass
 class Schema:
-    """The output schema of scraped news articles.
+    """A schema of info to scrape from news articles.
     """
     TITLE: str = 'title'
-    SUBTITLE: str = 'subtitle'
     DATE: str = 'date'
     AUTHOR: str = 'author'
-    TAGS: str = 'tags'
-    SITE: str = 'site'
-    LINK: str = 'link'
-    THEME: str = 'theme'
-    KEYWORD: str = 'keyword'
-    CONTENT: str = 'contents'
+    CONTENT: str = 'content'
 
-    def get_pd_schema() -> Dict[str, str]:
-        return {
-            'title': 'string',
-            'subtitle': 'string',
-            'date': 'dbdate',
-            'author': 'string',
-            'tags': 'string',
-            'site': 'string',
-            'link': 'string',
-            'theme': 'string',
-            'keyword': 'string',
-            'content': 'string'
-        }
-    
+    def get_columns(self) -> List[str]:
+        return list(map(lambda col: col.lower(), self.__annotations__.keys()))
     
 
-
-
-
-
-
+@dataclass
+class Row:
+    """A row of the structured output of news article info.
+    """
+    title: Optional[str] 
+    date: Optional[str] 
+    author: Optional[str]
+    site: str
+    url: str
+    theme: str
+    keyword: str 
+    content: Optional[str]
+    
