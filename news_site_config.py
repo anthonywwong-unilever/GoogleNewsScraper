@@ -1,5 +1,5 @@
 from typing import Dict, Optional
-from scraper.config.news_site import Site
+from scraper.config.news_site import Site, RareSite
 
 import re
 
@@ -7,7 +7,7 @@ import re
 class SiteConfig:
     """Config information for various news provider sites. 
     """
-    site_names: Dict[str, str]
+    site_names: Dict[str, Site]
     
     def __init__(self) -> None:
         """
@@ -35,7 +35,7 @@ class SiteConfig:
         return base_urls[0] if base_urls != [] else None
 
 
-    def _load_site_names(self) -> Dict[str, str]:
+    def _load_site_names(self) -> Dict[str, Site]:
         """Contains news site base URL and their site names.
 
         * Needs to be updated to include unseen news site. 
@@ -49,39 +49,39 @@ class SiteConfig:
            for the information corresponding to the output schema 
         """
         return {
-            'www.chemanalyst.com': Site.CHEM_ANALYST,
-            'www.fastmarkets.com': Site.FASTMARKETS,
-            'www.fas.usda.gov': Site.FAS_USDA,
-            'biodieselmagazine.com': Site.BIODIESEL_MAGAZINE,
-            'www.businessresearchinsights.com': Site.BUSINESS_RESEARCH_INSIGHTS,
-            'www.globenewswire.com': Site.GLOBE_NEWSWIRE,
-            'theedgemalaysia.com': Site.THE_EDGE_MALAYSIA,
-            'www.catf.us': Site.CLEAN_AIR_TASK_FORCE,
-            'theloadstar.com': Site.THE_LOADSTAR,
-            'www.transportenvironment.org': Site.TRANSPORT_ENVIRONMENT,
-            'www.gminsights.com': Site.GLOBAL_MARKET_INSIGHTS,
-            'www.grandviewresearch.com': Site.GRAND_VIEW_RESEARCH,
-            'www.resourcewise.com': Site.RESOURCE_WISE,
-            'www.reuters.com': Site.REUTERS,
-            'www.rystadenergy.com': Site.RYSTAD_ENERGY,
-            'www.ers.usda.gov': Site.ERS_USDA,
-            'www.greencarcongress.com': Site.GREEN_CAR_CONGRESS,
-            'waste-management-world.com': Site.WASTE_MANAGEMENT_WORLD,
-            'blog.ucsusa.org': Site.UNION_OF_CONCERNED_SCIENTISTS,
-            'think.ing.com': Site.ING_THINK,
-            'www.sciencedirect.com': Site.SCIENCE_DIRECT,
-            'www.iea.org': Site.INTERNATIONAL_ENERGY_AGENCY,
-            'www.eia.gov': Site.ENERGY_INFORMATION_ADMINISTRATION,
-            'www.ttnews.com': Site.TRANSPORT_TOPICS,
-            'www.theguardian.com': Site.THE_GUARDIAN,
-            'www.nature.com': Site.NATURE,
-            'thecounter.org': Site.THE_COUNTER,
-            'www.cmegroup.com': Site.CME_GROUP,
-            'energy.economictimes.indiatimes.com': Site.ET_ENERGYWORLD,
-            'www.clariant.com': Site.CLARIANT,
-            'biofuels-news.com': Site.BIOFUELS_INTERNATIONAL,
-            'ourworldindata.org': Site.OUR_WORLD_IN_DATA,
-            'www.newscientist.com': Site.NEW_SCIENTIST,
-            'www.researchgate.net': Site.RESEARCH_GATE,
-            'finance.yahoo.com': Site.YAHOO_FINANCE
+            'www.chemanalyst.com': RareSite.CHEM_ANALYST,
+            'www.fastmarkets.com': RareSite.FASTMARKETS,
+            'www.fas.usda.gov': RareSite.FAS_USDA,
+            'biodieselmagazine.com': RareSite.BIODIESEL_MAGAZINE,
+            'www.businessresearchinsights.com': RareSite.BUSINESS_RESEARCH_INSIGHTS,
+            'www.globenewswire.com': RareSite.GLOBE_NEWSWIRE,
+            'theedgemalaysia.com': RareSite.THE_EDGE_MALAYSIA,
+            'www.catf.us': RareSite.CLEAN_AIR_TASK_FORCE,
+            'theloadstar.com': RareSite.THE_LOADSTAR,
+            'www.transportenvironment.org': RareSite.TRANSPORT_ENVIRONMENT,
+            'www.gminsights.com': RareSite.GLOBAL_MARKET_INSIGHTS,
+            'www.grandviewresearch.com': RareSite.GRAND_VIEW_RESEARCH,
+            'www.resourcewise.com': RareSite.RESOURCE_WISE,
+            'www.reuters.com': RareSite.REUTERS,
+            'www.rystadenergy.com': RareSite.RYSTAD_ENERGY,
+            'www.ers.usda.gov': RareSite.ERS_USDA,
+            'www.greencarcongress.com': RareSite.GREEN_CAR_CONGRESS,
+            'waste-management-world.com': RareSite.WASTE_MANAGEMENT_WORLD,
+            'blog.ucsusa.org': RareSite.UNION_OF_CONCERNED_SCIENTISTS,
+            'think.ing.com': RareSite.ING_THINK,
+            'www.sciencedirect.com': RareSite.SCIENCE_DIRECT,
+            'www.iea.org': RareSite.INTERNATIONAL_ENERGY_AGENCY,
+            'www.eia.gov': RareSite.ENERGY_INFORMATION_ADMINISTRATION,
+            'www.ttnews.com': RareSite.TRANSPORT_TOPICS,
+            'www.theguardian.com': RareSite.THE_GUARDIAN,
+            'www.nature.com': RareSite.NATURE,
+            'thecounter.org': RareSite.THE_COUNTER,
+            'www.cmegroup.com': RareSite.CME_GROUP,
+            'energy.economictimes.indiatimes.com': RareSite.ET_ENERGYWORLD,
+            'www.clariant.com': RareSite.CLARIANT,
+            'biofuels-news.com': RareSite.BIOFUELS_INTERNATIONAL,
+            'ourworldindata.org': RareSite.OUR_WORLD_IN_DATA,
+            'www.newscientist.com': RareSite.NEW_SCIENTIST,
+            'www.researchgate.net': RareSite.RESEARCH_GATE,
+            'finance.yahoo.com': RareSite.YAHOO_FINANCE
         }

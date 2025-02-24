@@ -1,8 +1,18 @@
-from dataclasses import dataclass
 
 
-@dataclass
 class Site:
+    """
+    """
+    pass
+
+
+class FrequentSite(Site):
+    """
+    """
+    pass
+
+
+class RareSite(Site):
     """Names of news provider sites.
     """
     CHEM_ANALYST: str = 'ChemAnalyst'

@@ -16,7 +16,7 @@ class Theme:
 class Article:
     """An article from a news site.
     """
-    site: Optional[str] 
+    site: str 
     url: str 
     html_content: str
 
@@ -52,12 +52,12 @@ class Schema:
 class Row:
     """A row of the structured output of news article info.
     """
-    title: Optional[str] 
-    date: Optional[str] 
-    author: Optional[str]
     site: str
     url: str
     theme: str
     keyword: str 
-    content: Optional[str]
+    title: Optional[str] = None 
+    date: Optional[str] = None 
+    author: Optional[str] = None 
+    content: Optional[str] = None 
     
